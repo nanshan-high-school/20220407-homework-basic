@@ -10,7 +10,7 @@
 
 ## 本次要求
 * 使用 Vector 儲存輸入的成績
-* 使用 `for (int score:scores)` 語法
+* 使用 `for (int score : scores)` 語法
 
 
 ## 範例輸入
