@@ -14,21 +14,30 @@ int main() {
   }
   scores.pop_back();
   
-  int seatNumber = 1, minScore = 101, minPerson = 0, maxScore = 0, maxPerson = 0; 
+  int seatNumber = 1, minScore = 101, maxScore = 0;
+  vector<int> minPerson = {}, maxPerson = {};
   for (int i: scores) {
-    if (i > maxScore) {
-      maxScore = i;
-      maxPerson = seatNumber;
+    if (i >= maxScore) {
+      if (i > maxScore) {
+        maxScore = i;
+        maxPerson = {};
+      }
+      maxPerson.push_back(seatNumber);
     }
-    if (i < minScore) {
-      minScore = i;
-      minPerson = seatNumber;
+    if (i <= minScore) {
+      if (i < minScore) {
+        minScore = i;
+        minPerson = {};
+      }
+      minPerson.push_back(seatNumber);
     }
     seatNumber ++;
   }
 
   cout << "班級總分為" << totalScore << "分\n";
   cout << "班級總平均為" << (float)totalScore / scores.size() << "分\n";
-  cout << maxPerson << "號為最高分" << maxScore << "分 ; ";
-  cout << minPerson << "號為最低分" << minScore << "分";
+  for (int i : maxPerson) cout << " " << i ;
+  cout << "號為最高分" << maxScore << "分 ; ";
+  for (int i : minPerson) cout << " " << i;
+  cout << "號為最低分" << minScore << "分";
 }
